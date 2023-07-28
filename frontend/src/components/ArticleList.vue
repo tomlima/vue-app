@@ -1,5 +1,5 @@
 <template>
-  <section class="u-section news" id="s3">
+  <section class="u-section news">
     <div class="l-container">
       <h2 class="u-section__title">
         Lista de publicações
