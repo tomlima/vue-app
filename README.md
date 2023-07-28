@@ -2,6 +2,10 @@
 
 The project was created with the aim of consuming a third-party API in an easy, fast and secure way. For this, it was structured in two directories called `backend` and `frontend`, respectively.
 
+## Requirements
+
+-   `Node version >= 14.x.x  `
+
 ## Backend
 
 The backend was built with Node.js + Express and a request caching layer with [Axios Cache interceptor](https://axios-cache-interceptor.js.org/) and will serve as an API to receive requests from the frontend, consume the third party's api and return a response. We can say that we have our backend to act as a middleware in this case.
