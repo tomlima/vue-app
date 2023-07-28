@@ -31,12 +31,15 @@
 
         <div class="l-flex u-justify-content-center">
           <button
-            v-if="page <= totalPages"
+            v-if="page <= totalPages && loading == false"
             @click="loadMore()"
             class="c-button c-button--primary"
           >
             Ver mais
           </button>
+        </div>
+        <div v-if="loading" class="l-flex u-justify-content-center">
+          <div class="spinner"></div>
         </div>
       </div>
 
@@ -45,7 +48,6 @@
           >Nenhum conteúdo encontrado para a pesquisa : <b>{{ query }}</b></span
         >
       </div>
-      <div class="overlay"></div>
     </div>
   </section>
 </template>
@@ -57,6 +59,7 @@ export default {
   data() {
     return {
       page: 1,
+      loading: false,
       perPage: 20,
       totalPages: 0,
       totalContent: 0,
@@ -75,6 +78,7 @@ export default {
         this.articles = result.data.data.articles
         this.totalContent = result.data.data.totalResults
         this.totalPages = this.totalContent / this.perPage
+        this.loading = false
       },
       error => {
         console.log(error)
@@ -87,6 +91,7 @@ export default {
     Get Articles content
     -------------------*/
     getArticles() {
+      this.loading = true
       return axios.get(
         `${this.backendEndpoint}/article?q=${this.query}&page=${this.page}`
       )
@@ -99,6 +104,7 @@ export default {
       this.getArticles().then(
         result => {
           this.articles = this.articles.concat(result.data.data.articles)
+          this.loading = false
         },
         error => {
           console.log(error)
