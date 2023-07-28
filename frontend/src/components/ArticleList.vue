@@ -122,6 +122,7 @@ export default {
           this.articles = result.data.data.articles
           this.totalContent = result.data.data.totalResults
           this.totalPages = this.totalContent / this.perPage
+          this.loading = false
         },
         error => {
           console.log(error)
