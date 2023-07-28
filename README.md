@@ -21,7 +21,7 @@ Rename `.env.example` file to `.env`
 #### Get all articles
 
 ```http
-  GET http://localhost:3001/api/article
+  GET http://localhost:3001/api/article?q=Netflix&page=1
 ```
 
 | Parameter | Type     | Description                                                           |
